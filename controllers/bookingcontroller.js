@@ -2,8 +2,8 @@ const { createBooking, getBookingById } = require('../models/booking');
 
 const bookTicket = async (req, res) => {
   try {
-    const { scheduleId, seatNumber, passengerInfo } = req.body;
-    const bookingId = await createBooking(req.userId, scheduleId, seatNumber, passengerInfo);
+    const { userId, scheduleId, seatNumber, passengerInfo } = req.body;
+    const bookingId = await createBooking(userId, scheduleId, seatNumber, passengerInfo);
     res.status(201).send({ bookingId });
   } catch (error) {
     res.status(500).send({ error: 'Booking failed' });
